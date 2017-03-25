@@ -5,8 +5,8 @@ A set of experiments to prove Rust is capable of usage in DS
 * dlopen a library with C types
 * dlopen a library with rust types
 * no dlopen, call back reg
-* expose header and symbols (C)
+* expose header and symbols (exposed_header_and_symbols)
 * rust that contains C internall (expose rust)
 * weak symbols and linking.
-* address sanitizer
+* address sanitizer (asanx)
 

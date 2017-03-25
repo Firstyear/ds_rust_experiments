@@ -1,0 +1,11 @@
+[package]
+name = "ehasx"
+version = "0.1.0"
+authors = ["william"]
+
+[dependencies]
+
+[lib]
+name = "ehasx"
+crate-type = ["dylib"]
+
