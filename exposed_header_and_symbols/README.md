@@ -15,4 +15,10 @@ autoreconf -fiv
 make
 make check
 
+To check that there are no leaks:
+
+cp libehasx.so libehasx.so.0
+LD_LIBRARY_PATH=./ valgrind .libs/test_ehasx
+
+
 

@@ -34,6 +34,11 @@ stamp-h1
 *.dirstamp
 *.la
 *.lo
+*.so
+*.so.0
+*.log
+*.trs
+*.d
 *.o
 *.pyc
 __pycache__
