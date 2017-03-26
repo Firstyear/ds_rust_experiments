@@ -13,6 +13,7 @@ To test this library:
 autoreconf -fiv
 ./configure
 make
+make cargo_check
 make check
 
 To check that there are no leaks:

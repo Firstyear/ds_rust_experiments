@@ -19,7 +19,7 @@ ehasx.o:
 	cargo rustc $(RUSTC_FLAGS) -- --emit obj=$(abs_builddir)/$@
 
 libehasx.a:
-	cargo rustc $(RUSTC_FLAGS) -- --crate-type=staticlib --emit link=$(abs_builddir)/$@
+	cargo rustc $(RUSTC_FLAGS) -- --crate-type=staticlib --emit link -o $(abs_builddir)/$@
 
 cargo_check:
 	cargo test
