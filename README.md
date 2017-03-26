@@ -1,12 +1,13 @@
 # ds_rust_experiments
 A set of experiments to prove Rust is capable of usage in DS
 
-* how to do debug vs prod in configure and build
+* how to do debug vs prod in configure and build (debug_vs_release)
+
 * dlopen a library with C types
 * dlopen a library with rust types
 * no dlopen, call back reg
 * expose header and symbols (exposed_header_and_symbols)
-* rust that contains C internall (expose rust)
+* rust that contains C internaly (rust_with_c)
 * weak symbols and linking.
 * address sanitizer (asanx)
 

@@ -1,6 +1,6 @@
 AC_PREREQ([2.53])
 
-AC_INIT([ehasx], [0.1.0])
+AC_INIT([dvr], [0.1.0])
 AM_INIT_AUTOMAKE([1.6 foreign subdir-objects])
 m4_ifdef([AM_SILENT_RULES], [
      AM_SILENT_RULES([yes])
@@ -32,6 +32,7 @@ AC_ARG_ENABLE(debug, AS_HELP_STRING([--enable-debug], [Enable debug features (de
   AC_MSG_RESULT(no)
 ])
 AM_CONDITIONAL([DEBUG],[test -n "$with_debug"])
+
 
 AC_CONFIG_FILES([
   Makefile

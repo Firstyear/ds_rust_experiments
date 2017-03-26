@@ -3,7 +3,11 @@
 lib_LTLIBRARIES = libehasx.la
 
 # Rust compiler flags
+if DEBUG
+RUSTC_FLAGS =
+else
 RUSTC_FLAGS = --release
+endif
 RUST_LDFLAGS = -ldl -lpthread -lgcc_s -lc -lm -lrt -lutil
 
 # Hello Rust!
@@ -15,7 +19,7 @@ ehasx.o:
 	cargo rustc $(RUSTC_FLAGS) -- --emit obj=$(abs_builddir)/$@
 
 libehasx.a:
-	cargo rustc $(RUSTC_FLAGS) -- --crate-type=staticlib --emit link -o $(abs_builddir)/$@
+	cargo rustc $(RUSTC_FLAGS) -- --crate-type=staticlib --emit link=$(abs_builddir)/$@
 
 cargo_check:
 	cargo test
