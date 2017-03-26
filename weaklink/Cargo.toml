@@ -1,0 +1,11 @@
+[package]
+name = "weaklink"
+version = "0.1.0"
+authors = ["William Brown <william@blackhats.net.au>"]
+
+[dependencies]
+
+[lib]
+name = "weaklink"
+crate-type = ["dylib"]
+
