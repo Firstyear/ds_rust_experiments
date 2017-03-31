@@ -1,0 +1,7 @@
+[package]
+name = "plugina"
+version = "0.1.0"
+authors = ["William Brown <william@blackhats.net.au>"]
+
+[dependencies]
+interfaces = { path = "../interfaces" }

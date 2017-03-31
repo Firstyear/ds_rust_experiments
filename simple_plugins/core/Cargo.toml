@@ -1,0 +1,10 @@
+[package]
+name = "plugincore"
+version = "0.1.0"
+authors = ["William Brown <william@blackhats.net.au>"]
+
+[dependencies]
+plugina = { path = "../plugin_a" }
+pluginb = { path = "../plugin_b" }
+interfaces = { path = "../interfaces" }
+
