@@ -27,17 +27,24 @@ impl PluginCore {
 mod tests {
 
     use interfaces::PluginCallbacks;
-    use super::PluginCore;
     use interfaces::PluginRegistration;
+    use interfaces::CoreApi;
+    use super::PluginCore;
     use plugina::PluginA;
 
     #[test]
     fn plugin_core() {
+        let core_api = CoreApi::new();
         let core = PluginCore::new();
 
         let mut pcb = PluginCallbacks::new();
 
         PluginA::register(&mut pcb);
+
+        // Try a callback!
+        
+        let func = pcb.pre_cb.unwrap();
+        func(&core_api);
 
     }
 }

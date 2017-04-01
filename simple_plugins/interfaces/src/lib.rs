@@ -8,6 +8,14 @@ pub struct CoreApi {
     internal_test: i64,
 }
 
+impl CoreApi {
+    pub fn new() -> Self {
+        CoreApi {
+            internal_test: 1,
+        }
+    }
+}
+
 impl CallbackParameters for CoreApi {
     fn cb_test(&self) -> i64 {
         self.internal_test

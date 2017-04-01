@@ -9,6 +9,7 @@ pub struct PluginA {}
 
 impl PluginA {
     fn pa_pre_cb<T: CallbackParameters>(pb: &T) {
+        println!("Hello From a plugin!");
     }
 }
 
