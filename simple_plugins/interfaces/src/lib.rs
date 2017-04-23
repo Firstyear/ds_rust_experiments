@@ -1,7 +1,13 @@
 
+pub enum PluginOperationError {
+    Unknown,
+    UnwillingToPerform,
+}
+
 // Plugins register their callbacks to this function
 pub struct PluginCallbacks {
-    pub pre_cb: Option<fn(&CoreApi)>,
+    pub pre_cb: Option<fn(&CoreApi) -> Result<(), PluginOperationError>>,
+    pub post_cb: Option<fn(&CoreApi) -> Result<(), PluginOperationError>>,
 }
 
 pub struct CoreApi {
@@ -25,7 +31,8 @@ impl CallbackParameters for CoreApi {
 impl PluginCallbacks {
     pub fn new() -> Self {
         PluginCallbacks{
-            pre_cb: None
+            pre_cb: None,
+            post_cb: None
         }
     }
 }

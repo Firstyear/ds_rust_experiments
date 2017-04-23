@@ -4,12 +4,15 @@ extern crate interfaces;
 use interfaces::PluginRegistration;
 use interfaces::PluginCallbacks;
 use interfaces::CallbackParameters;
+use interfaces::PluginOperationError;
 
 pub struct PluginA {}
 
 impl PluginA {
-    fn pa_pre_cb<T: CallbackParameters>(pb: &T) {
-        println!("Hello From a plugin!");
+    fn pa_pre_cb<T: CallbackParameters>(pb: &T) -> Result<(), PluginOperationError> {
+        println!("Hello From plugin A!");
+        println!("Plugin A: cb_test is {}", pb.cb_test());
+        Ok(())
     }
 }
 
