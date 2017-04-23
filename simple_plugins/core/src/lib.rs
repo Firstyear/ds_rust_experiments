@@ -72,28 +72,13 @@ mod tests {
     fn plugin_core() {
         let mut core = PluginCore::new();
 
-        /*
-        let mut pcb_a = PluginCallbacks::new();
-        let mut pcb_b = PluginCallbacks::new();
-        */
-
-
         core.submit(PluginA::register);
         core.submit(PluginB::register);
-        // PluginB::register(&mut pcb_b);
 
         // Try a callback!
 
         core.pre();
         core.post();
-
-        /*
-        let func_a = pcb_a.pre_cb.unwrap();
-        func_a(&core_api);
-
-        let func_b = pcb_b.post_cb.unwrap();
-        func_b(&core_api);
-        */
 
     }
 }
