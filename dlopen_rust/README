@@ -1,0 +1,8 @@
+
+This contains a demonstration of how to dlopen rust code from rust, and execute
+callbacks.
+
+The so is build from the alice library. The caller is bob.
+
+
+
