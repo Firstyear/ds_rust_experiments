@@ -1,16 +1,6 @@
-# Rust compiler flags
-if DEBUG
-if ASAN
-RUSTC_FLAGS = -Z sanitizer=address
-AM_CPPFLAGS = -g3 -DDEBUG -O0 -fsanitize=address -fno-omit-frame-pointer
-else
-RUSTC_FLAGS =
-AM_CPPFLAGS = -g3 -DDEBUG -O0
-endif
-else
-RUSTC_FLAGS = --release
-AM_CPPFLAGS =
-endif
+
+RUSTC_FLAGS = @asan_rust_defs@ @debug_rust_defs@
+AM_CPPFLAGS = @asan_c_defs@ @debug_r_defs@
 
 lib_LTLIBRARIES = libplugin_r.la
 

@@ -5,7 +5,9 @@
 # RUST_LDFLAGS = -ldl -lpthread -lgcc_s -lc -lm -lrt -lutil
 
 
-SUBDIRS = plugin_r library
+SUBDIRS = 	plugin_c \
+			plugin_r \
+			library
 
 
 # How can we build a --bin with autotools?

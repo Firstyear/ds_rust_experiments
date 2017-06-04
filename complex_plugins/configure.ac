@@ -69,6 +69,7 @@ AC_SUBST([asan_c_defs])
 
 
 AC_CONFIG_FILES([
+  plugin_c/Makefile
   plugin_r/Makefile
   library/Makefile
   Makefile
