@@ -1,0 +1,10 @@
+[package]
+name = "library"
+version = "0.1.0"
+authors = ["William Brown <william@blackhats.net.au>"]
+
+[lib]
+name = "library"
+crate-type = ["dylib"]
+
+[dependencies]

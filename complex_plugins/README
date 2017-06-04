@@ -1,0 +1,15 @@
+
+This is the most important example of the project here. It shows the usage of
+almost all aspects combined:
+
+* The usage of ASAN on plugins and rust to find issues
+* The exposure of a rust api via C ffi, and headers.
+* plugins in C and Rust to consume that api
+* a plugin controller that opens those plugins and executes their callbacks
+  as required.
+
+You can build the project with the configure and makefile in the root of
+this folder.
+
+
+
