@@ -40,11 +40,14 @@ AC_ARG_ENABLE(debug, AS_HELP_STRING([--enable-debug], [Enable debug features (de
   AC_MSG_RESULT(yes)
   with_debug=yes
   debug_rust_defs=""
+  debug_cargo_defs=""
   debug_c_defs="-g3 -DDEBUG -O0"
 ],
 [
   AC_MSG_RESULT(no)
-  debug_rust_defs="--release"
+  # We always supply debug info, for rpm to extract
+  debug_rust_defs="-C debuginfo"
+  debug_cargo_defs="--release"
   debug_c_defs=""
 ])
 AM_CONDITIONAL([DEBUG],[test -n "$with_debug"])
@@ -63,6 +66,7 @@ AC_ARG_ENABLE(asan, AS_HELP_STRING([--enable-asan], [Enable ASAN features (defau
 AM_CONDITIONAL([ASAN],[test -n "$with_asan"])
 
 AC_SUBST([debug_rust_defs])
+AC_SUBST([debug_cargo_defs])
 AC_SUBST([debug_c_defs])
 AC_SUBST([asan_rust_defs])
 AC_SUBST([asan_c_defs])

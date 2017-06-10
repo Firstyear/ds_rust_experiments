@@ -1,4 +1,5 @@
 
+CARGO_FLAGS = @debug_cargo_defs@
 RUSTC_FLAGS = @asan_rust_defs@ @debug_rust_defs@
 AM_CPPFLAGS = @asan_c_defs@ @debug_c_defs@
 
@@ -19,13 +20,16 @@ libplugin_c_la_LDFLAGS = $(RUST_LDFLAGS)
 libplugin_r_la_SOURCES = ""
 libplugin_r_la_LIBADD = libplugin_r.ra
 
-%.ra:
+%.ro:
 	cd $(shell echo $@ | sed 's/\.ra$$//' | sed 's/^lib//') && \
-	cargo rustc $(RUSTC_FLAGS) -- --emit obj=$(abs_builddir)/$@ && \
-	cargo rustc $(RUSTC_FLAGS) -- --crate-type=staticlib --emit link -o $(abs_builddir)/$@
+	cargo rustc $(CARGO_FLAGS) -- $(RUSTC_FLAGS) --emit obj=$(abs_builddir)/$@
+
+%.ra: %.ro
+	cd $(shell echo $@ | sed 's/\.ra$$//' | sed 's/^lib//') && \
+	cargo rustc $(CARGO_FLAGS) -- $(RUSTC_FLAGS) --crate-type=staticlib --emit link -o $(abs_builddir)/$@
 
 controller_bin:
-	cd controller && cargo rustc $(RUSTC_FLAGS)
+	cd controller && cargo rustc $(CARGO_FLAGS) -- $(RUSTC_FLAGS)
 	cd controller && cargo install --force --root=$(abs_builddir) --bin controller
 	mv $(abs_builddir)/bin/controller ./controller_bin
 
