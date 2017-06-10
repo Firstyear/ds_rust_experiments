@@ -4,7 +4,7 @@ AM_CPPFLAGS = @asan_c_defs@ @debug_c_defs@
 
 RUST_LDFLAGS = -ldl -lpthread -lgcc_s -lc -lm -lrt -lutil
 
-bin_PROGRAMS = controller
+bin_PROGRAMS = controller_bin
 
 lib_LTLIBRARIES = 	liblibrary.la \
 					libplugin_c.la \
@@ -24,9 +24,15 @@ libplugin_r_la_LIBADD = libplugin_r.ra
 	cargo rustc $(RUSTC_FLAGS) -- --emit obj=$(abs_builddir)/$@ && \
 	cargo rustc $(RUSTC_FLAGS) -- --crate-type=staticlib --emit link -o $(abs_builddir)/$@
 
-controller:
-	cd $@ && cargo rustc $(RUSTC_FLAGS)
-	cd $@ && cargo install --root=$(abs_builddir) --bin $@
-	# mv /bin/$@ ./
+controller_bin:
+	cd controller && cargo rustc $(RUSTC_FLAGS)
+	cd controller && cargo install --force --root=$(abs_builddir) --bin controller
+	mv $(abs_builddir)/bin/controller ./controller_bin
+
+clean-local:
+	cd plugin_r && cargo clean
+	cd library && cargo clean
+	cd controller && cargo clean
+
 
 
