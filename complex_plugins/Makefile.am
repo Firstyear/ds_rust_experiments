@@ -7,7 +7,8 @@
 
 SUBDIRS = 	plugin_c \
 			plugin_r \
-			library
+			library \
+			controller
 
 
 # How can we build a --bin with autotools?

@@ -72,6 +72,7 @@ AC_CONFIG_FILES([
   plugin_c/Makefile
   plugin_r/Makefile
   library/Makefile
+  controller/Makefile
   Makefile
 ])
 
