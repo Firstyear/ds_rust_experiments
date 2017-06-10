@@ -30,9 +30,12 @@ controller_bin:
 	mv $(abs_builddir)/bin/controller ./controller_bin
 
 clean-local:
-	cd plugin_r && cargo clean
-	cd library && cargo clean
-	cd controller && cargo clean
+	rm *.ra; true
+	rm *.ro; true
+	rm *.so; true
+	cd plugin_r && cargo clean ; true
+	cd library && cargo clean ; true
+	cd controller && cargo clean ; true
 
 
 
