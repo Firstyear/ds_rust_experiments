@@ -8,7 +8,7 @@ fn main() {
     println!("Hello, world!");
 
     // let libpath = Path::new("./libplugin_r.so");
-    let libpath = Path::new("../plugin_r/liblib.so");
+    let libpath = Path::new("./.libs/libplugin_r.so");
 
     match DynamicLibrary::open(Some(libpath)) {
         Ok(handle) => {
