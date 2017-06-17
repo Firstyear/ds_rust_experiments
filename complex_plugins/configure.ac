@@ -19,11 +19,10 @@ AC_CONFIG_MACRO_DIRS([m4])
 AC_MSG_CHECKING(for --enable-rust)
 AC_ARG_ENABLE(rust, AS_HELP_STRING([--enable-rust], [Enable rust language features (default: no)]),
 [
-    AC_CHECK_PROG(CARGO, [cargo], [yes], [no])
     AC_CHECK_PROG(RUSTC, [rustc], [yes], [no])
 
-    AS_IF([test "$CARGO" != "yes" -o "$RUSTC" != "yes"], [
-      AC_MSG_FAILURE("Rust based plugins cannot be built $CARGO $RUSTC")
+    AS_IF([test "$RUSTC" != "yes"], [
+      AC_MSG_FAILURE("Rust based plugins cannot be built - missing rustc in $PATH")
     ])
     with_rust=yes
     AC_MSG_RESULT(yes)
@@ -39,15 +38,13 @@ AC_ARG_ENABLE(debug, AS_HELP_STRING([--enable-debug], [Enable debug features (de
 [
   AC_MSG_RESULT(yes)
   with_debug=yes
-  debug_rust_defs=""
-  debug_cargo_defs=""
+  debug_rust_defs="-C debuginfo=2"
   debug_c_defs="-g3 -DDEBUG -O0"
 ],
 [
   AC_MSG_RESULT(no)
   # We always supply debug info, for rpm to extract
-  debug_rust_defs="-C debuginfo"
-  debug_cargo_defs="--release"
+  debug_rust_defs="-C debuginfo=2 -C opt-level=2"
   debug_c_defs=""
 ])
 AM_CONDITIONAL([DEBUG],[test -n "$with_debug"])
@@ -57,7 +54,7 @@ AC_ARG_ENABLE(asan, AS_HELP_STRING([--enable-asan], [Enable ASAN features (defau
 [
     AC_MSG_RESULT(yes)
     with_asan=yes
-    asan_rust_defs="-Z sanitizer=address"
+    asan_rust_defs="-Z sanitizer=address -lasan"
     asan_c_defs="-fsanitize=address -fno-omit-frame-pointer"
 ],
 [
@@ -66,7 +63,6 @@ AC_ARG_ENABLE(asan, AS_HELP_STRING([--enable-asan], [Enable ASAN features (defau
 AM_CONDITIONAL([ASAN],[test -n "$with_asan"])
 
 AC_SUBST([debug_rust_defs])
-AC_SUBST([debug_cargo_defs])
 AC_SUBST([debug_c_defs])
 AC_SUBST([asan_rust_defs])
 AC_SUBST([asan_c_defs])

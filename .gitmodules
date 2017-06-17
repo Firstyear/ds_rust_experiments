@@ -1,0 +1,6 @@
+[submodule "complex_plugins/external/libc"]
+	path = complex_plugins/external/libc
+	url = https://github.com/rust-lang/libc.git
+[submodule "complex_plugins/external/dylib"]
+	path = complex_plugins/external/dylib
+	url = https://github.com/Kintaro/rust-dylib.git
