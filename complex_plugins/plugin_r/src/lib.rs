@@ -1,11 +1,12 @@
+extern crate library;
+
+use library::Plugin;
 
 #[no_mangle]
-pub extern fn plugin_init() -> i32 {
-    let xs = [0, 1, 2, 3];
-    println!("{:?}", xs);
-    let y = unsafe { *xs.as_ptr().offset(4) };
-    // 0
-    y
+pub extern fn plugin_init(plugin: &mut Plugin) -> i32 {
+    println!("plugin_r: init");
+    plugin.register_pre_operation();
+    0
 }
 
 #[cfg(test)]
